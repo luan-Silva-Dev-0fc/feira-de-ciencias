@@ -4,7 +4,7 @@ const urlsToCache = [
   "/feira-de-ciencias/tela-principal.html",
   "/feira-de-ciencias/sem-conexao.html",
   "/feira-de-ciencias/manifest.json",
-  "/feira-de-ciencias/assets/logo.png"
+  "/feira-de-ciencias/logo.png"
 ];
 
 self.addEventListener('install', (event) => {
