@@ -3,16 +3,17 @@ const urlsToCache = [
   "/feira-de-ciencias/index.html",
   "/feira-de-ciencias/tela-principal.html",
   "/feira-de-ciencias/sem-conexao.html",
-  "/feira-de-ciencias/manifest.json"
+  "/feira-de-ciencias/manifest.json",
+  "/feira-de-ciencias/assets/logo.png" // Adicionando logo ao cache
 ];
 
 // Instala o Service Worker e guarda os arquivos
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-    .then((cache) => {
-      return cache.addAll(urlsToCache);
-    })
+      .then((cache) => {
+        return cache.addAll(urlsToCache);
+      })
   );
 });
 
