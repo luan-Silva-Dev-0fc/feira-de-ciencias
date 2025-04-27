@@ -18,7 +18,7 @@ if ('serviceWorker' in navigator) {
     .catch(error => console.error('Erro ao registrar Service Worker:', error));
 }
 
-// Verificar conexão
+// Atualizar tela conforme conexão
 function atualizarTela() {
     const iframe = document.getElementById('tela');
     if (navigator.onLine) {
@@ -28,11 +28,10 @@ function atualizarTela() {
     }
 }
 
-// Atualiza ao mudar status da conexão
 window.addEventListener('online', atualizarTela);
 window.addEventListener('offline', atualizarTela);
 
-// Atualizar ao carregar
+// Atualizar na hora que abrir
 atualizarTela();
 </script>
 
