@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>PWA Tela Principal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+<iframe id="tela" src="tela-principal.html" style="width:100vw; height:100vh; border:none;"></iframe>
+
+<script>
+// Registrar o Service Worker
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js')
+    .then(() => console.log('Service Worker registrado com sucesso!'))
+    .catch(error => console.error('Erro ao registrar Service Worker:', error));
+}
+
+// Verificar conexão
+function atualizarTela() {
+    const iframe = document.getElementById('tela');
+    if (navigator.onLine) {
+        iframe.src = "tela-principal.html";
+    } else {
+        iframe.src = "sem-conexao.html";
+    }
+}
+
+// Atualiza ao mudar status da conexão
+window.addEventListener('online', atualizarTela);
+window.addEventListener('offline', atualizarTela);
+
+// Atualizar ao carregar
+atualizarTela();
+</script>
+
+</body>
+</html>
