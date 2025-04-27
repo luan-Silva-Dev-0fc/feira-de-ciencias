@@ -112,7 +112,7 @@
 
   @media (max-width: 500px) {
     .container {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
       padding-top: 10px;
     }
 
@@ -120,66 +120,6 @@
       font-size: 20px;
       margin-top: 20px;
     }
-  }
-
-  /* === MENU E TEMA === */
-  .menu-toggle {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 30px;
-    height: 25px;
-    cursor: pointer;
-    z-index: 999;
-  }
-
-  .menu-toggle div {
-    background-color: #546c4a;
-    height: 4px;
-    margin: 5px 0;
-    transition: 0.4s;
-  }
-
-  .menu-toggle.open .bar1 {
-    transform: rotate(-45deg) translate(-6px, 6px);
-  }
-
-  .menu-toggle.open .bar2 {
-    opacity: 0;
-  }
-
-  .menu-toggle.open .bar3 {
-    transform: rotate(45deg) translate(-5px, -5px);
-  }
-
-  .side-menu {
-    position: fixed;
-    top: 0;
-    left: -250px;
-    width: 200px;
-    height: 100%;
-    background-color: #f5f5f5;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-    padding: 60px 20px;
-    transition: 0.3s;
-    z-index: 998;
-  }
-
-  .side-menu.active {
-    left: 0;
-  }
-
-  .side-menu button {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    background-color: #546c4a;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
   }
 
   body.dark-mode {
@@ -266,31 +206,9 @@
 
     startTypingAnimation();
   });
-
-  function toggleMenu(x) {
-    x.classList.toggle("open");
-    document.getElementById("sideMenu").classList.toggle("active");
-  }
-
-  function toggleTheme() {
-    const body = document.body;
-    const dark = body.classList.toggle("dark-mode");
-    localStorage.setItem("tema", dark ? "escuro" : "claro");
-  }
 </script>
 </head>
 <body>
-  <!-- Botão de três barras -->
-  <div class="menu-toggle" onclick="toggleMenu(this)">
-    <div class="bar1"></div>
-    <div class="bar2"></div>
-    <div class="bar3"></div>
-  </div>
-
-  <!-- Menu lateral -->
-  <div class="side-menu" id="sideMenu">
-    <button onclick="toggleTheme()">Mudar Tema Preto</button>
-  </div>
 
   <header>
     <img src="environment-animate.svg" alt="Animação" class="banner-svg">
@@ -313,5 +231,6 @@
     <a href="https://danteravenswood.github.io/Sociologia/" class="btn"><img src="dociologia.gif" alt="">Sociologia</a>
     <a href="https://danteravenswood.github.io/Ingl-s/" class="btn"><img src="ingles.gif" alt="">Inglês</a>
   </div>
+
 </body>
 </html>
