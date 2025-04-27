@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoProf</title>
+  <style>
+    /* Estilos principais para a página */
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    iframe {
+      width: 100%;
+      height: 100vh;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="content-frame" src="tela-principal.html"></iframe> <!-- Carrega a tela principal HTML -->
+
+  <script>
+    function checkConnection() {
+      const iframe = document.getElementById('content-frame');
+      
+      // Verificar se o dispositivo está online
+      if (!navigator.onLine) {
+        iframe.src = 'sem-conexao.html';  // Redireciona para a página sem conexão
+      } else {
+        iframe.src = 'tela-principal.html';  // Carrega a página principal quando online
+      }
+    }
+
+    // Verifica a conexão ao carregar a página
+    window.addEventListener('load', checkConnection);
+
+    // Verifica a conexão sempre que o status de rede mudar
+    window.addEventListener('online', checkConnection);
+    window.addEventListener('offline', checkConnection);
+  </script>
+</body>
+</html>
