@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>PWA Tela Principal</title>
+    <title>EcoProf</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="manifest.json">
 
@@ -21,21 +21,60 @@
             height: 100%;
             border: none;
         }
+
+        #installBanner {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #546c4a;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 1000;
+            font-family: sans-serif;
+        }
+
+        #installBanner button {
+            margin-left: 10px;
+            background: white;
+            color: #546c4a;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #installBanner .close {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 18px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 
 <iframe id="tela" src="tela-principal.html"></iframe>
 
+<!-- Banner de instalação (agora no topo) -->
+<div id="installBanner">
+    Instale o app EcoProf!
+    <button id="installButton">Instalar</button>
+    <button class="close" id="closeBanner">×</button>
+</div>
+
 <script>
-// Registrar o Service Worker
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service-worker.js')
     .then(() => console.log('Service Worker registrado com sucesso!'))
     .catch(error => console.error('Erro ao registrar Service Worker:', error));
 }
 
-// Atualizar tela conforme conexão
 function atualizarTela() {
     const iframe = document.getElementById('tela');
     if (navigator.onLine) {
@@ -47,10 +86,11 @@ function atualizarTela() {
 
 window.addEventListener('online', atualizarTela);
 window.addEventListener('offline', atualizarTela);
-
-// Atualizar na hora que abrir
 atualizarTela();
 </script>
+
+<!-- Script de instalação separado -->
+<script src="instalacao.js"></script>
 
 </body>
 </html>
