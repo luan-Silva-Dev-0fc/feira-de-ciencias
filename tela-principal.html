@@ -126,6 +126,54 @@
     background-color: #121212;
     color: #ccc;
   }
+
+  .menu-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 1001;
+    color: #546c4a;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: -260px;
+    width: 250px;
+    height: 100%;
+    background-color: #f5f5f5;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    padding: 20px;
+    text-align: left;
+  }
+
+  .sidebar.open {
+    right: 0;
+  }
+
+  .sidebar h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #546c4a;
+  }
+
+  .sidebar a {
+    display: block;
+    padding: 10px 0;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .sidebar a:hover {
+    text-decoration: underline;
+  }
 </style>
 
 <script>
@@ -134,8 +182,14 @@
     const dot = document.querySelector(".dot");
     const svg = document.querySelector(".banner-svg");
     const logo = document.querySelector(".banner-logo");
+    const menuBtn = document.getElementById("menu-btn");
+    const sidebar = document.getElementById("sidebar");
 
-    // Aplicar tema salvo
+    // Alternar barra lateral
+    menuBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+    });
+
     const temaSalvo = localStorage.getItem("tema");
     if (temaSalvo === "escuro") {
       document.body.classList.add("dark-mode");
@@ -209,6 +263,15 @@
 </script>
 </head>
 <body>
+
+  <!-- Botão de três pontinhos -->
+  <button id="menu-btn" class="menu-btn">⋮</button>
+
+  <!-- Barra lateral -->
+  <div id="sidebar" class="sidebar">
+    <h2>Menu</h2>
+    <a href="https://luanzinho0fc.github.io/Den-ncia-ambiental/" target="_blank">Canais de denúncia</a>
+  </div>
 
   <header>
     <img src="environment-animate.svg" alt="Animação" class="banner-svg">
